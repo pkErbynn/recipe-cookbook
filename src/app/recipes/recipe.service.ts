@@ -5,10 +5,10 @@ import { ShoppingListService } from "../shopping-list/shopping-list.service";
 import { Subject } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class RecipeService {
-    constructor(private shoppingListService: ShoppingListService) {}
+  constructor(private shoppingListService: ShoppingListService) {}
 
   recipesChanged = new Subject<Recipe[]>();
   recipes: Recipe[] = [
@@ -19,7 +19,7 @@ export class RecipeService {
       [
         new Ingredient("Meat", 1),
         new Ingredient("French Fries", 20),
-        new Ingredient("Source", 1)
+        new Ingredient("Source", 1),
       ]
     ),
     new Recipe(
@@ -29,10 +29,15 @@ export class RecipeService {
       [
         new Ingredient("Meat", 2),
         new Ingredient("Buns Bread", 2),
-        new Ingredient("Sliced Vegetables", 10)
+        new Ingredient("Sliced Vegetables", 10),
       ]
-    )
+    ),
   ];
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
