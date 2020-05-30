@@ -11,29 +11,30 @@ export class RecipeService {
   constructor(private shoppingListService: ShoppingListService) {}
 
   recipesChanged = new Subject<Recipe[]>();
-  recipes: Recipe[] = [
-    new Recipe(
-      "Tasty Schnitzel",
-      "A Super-tasty Pizza - just awesome",
-      "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/8/6/0/WU2301_Four-Cheese-Pepperoni-Pizzadilla_s4x3.jpg.rend.hgtvcom.826.620.suffix/1565115622965.jpeg",
-      [
-        new Ingredient("Meat", 1),
-        new Ingredient("French Fries", 20),
-        new Ingredient("Source", 1),
-      ]
-    ),
-    new Recipe(
-      "Big Fat Burger",
-      "What else you need to say ? :) ",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuEK3iHtgxszGgw4euKVT7xxqw71bTLSID9wnmii7SURY_N0p1&s",
-      [
-        new Ingredient("Meat", 2),
-        new Ingredient("Buns Bread", 2),
-        new Ingredient("Sliced Vegetables", 10),
-      ]
-    ),
-  ];
+  // recipes: Recipe[] = [
+  //   new Recipe(
+  //     "Tasty Schnitzel",
+  //     "A Super-tasty Pizza - just awesome",
+  //     "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/8/6/0/WU2301_Four-Cheese-Pepperoni-Pizzadilla_s4x3.jpg.rend.hgtvcom.826.620.suffix/1565115622965.jpeg",
+  //     [
+  //       new Ingredient("Meat", 1),
+  //       new Ingredient("French Fries", 20),
+  //       new Ingredient("Source", 1),
+  //     ]
+  //   ),
+  //   new Recipe(
+  //     "Big Fat Burger",
+  //     "What else you need to say ? :) ",
+  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuEK3iHtgxszGgw4euKVT7xxqw71bTLSID9wnmii7SURY_N0p1&s",
+  //     [
+  //       new Ingredient("Meat", 2),
+  //       new Ingredient("Buns Bread", 2),
+  //       new Ingredient("Sliced Vegetables", 10),
+  //     ]
+  //   ),
+  // ];
 
+  private recipes: Recipe[] = [];
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
     this.recipesChanged.next(this.recipes.slice());
