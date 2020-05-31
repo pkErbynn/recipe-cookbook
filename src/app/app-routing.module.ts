@@ -27,7 +27,6 @@ const appRoutes: Routes = [
       },
     ],
   },
-
   { path: "shopping-list", component: ShoppingListComponent },
 ];
 export const routes: Routes = [];
