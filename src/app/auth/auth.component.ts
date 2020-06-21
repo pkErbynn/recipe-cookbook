@@ -34,10 +34,10 @@ export class AuthComponent {
           this.isLoading = false;
           console.log(res);
         },
-        (error) => {
-          this.error = "An error has occurred!";
+        (errorMessage) => {
+          console.log(errorMessage);
+          this.error = errorMessage;
           this.isLoading = false;
-          console.log(error);
         }
       );
     }
