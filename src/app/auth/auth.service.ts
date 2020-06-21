@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 interface AuthResponseDate {
+  kind: string;
   idToken: string;
   email: string;
   refreshToken: string;
