@@ -28,6 +28,11 @@ export class DataStorageService {
 
   fetchRecipes() {
     // gets subscribed value only when this code is executed....comes with no unsubscription
+
+    // two subscriptions/observables used here, user, http-get
+    // last result being returned in the observable chain
+
+    // user token is being accessed from 'user' observable and used a parameter on the 'get' observable
     return this.authService.user.pipe(
       take(1),
       exhaustMap((user) => {

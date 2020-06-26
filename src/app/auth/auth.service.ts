@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, tap } from "rxjs/operators";
-import { throwError, Subject } from "rxjs";
+import { throwError, Subject, BehaviorSubject } from "rxjs";
 import { User } from "./user.model";
 
 export interface AuthResponseData {
@@ -16,7 +16,10 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  user = new Subject<User>();
+
+  // login occurs way earlier before user will even subscribe to get the current user @ anytime thus, not just a Subject
+  // and requires init value
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {}
 
