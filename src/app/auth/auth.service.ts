@@ -16,7 +16,6 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-
   // login occurs way earlier before user will even subscribe to get the current user @ anytime thus, not just a Subject
   // and requires init value
   user = new BehaviorSubject<User>(null);

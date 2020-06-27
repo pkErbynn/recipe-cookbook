@@ -33,27 +33,23 @@ export class DataStorageService {
     // last result being returned in the observable chain
 
     // user token is being accessed from 'user' observable and used a parameter on the 'get' observable
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(
-          "https://my-recipe-book-ng-2230b.firebaseio.com/recipes.json",
-          {
-            params: new HttpParams().set("auth", user.token),
-          }
-        );
-      }),
-      map((recipes) => {
-        return recipes.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
-      }),
-      tap((recipes) => {
-        this.recipeService.setRecipes(recipes);
-      })
-    );
+
+    return this.http
+      .get<Recipe[]>(
+        "https://my-recipe-book-ng-2230b.firebaseio.com/recipes.json"
+      )
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap((recipes) => {
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
