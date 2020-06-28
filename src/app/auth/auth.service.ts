@@ -4,6 +4,7 @@ import { catchError, tap } from "rxjs/operators";
 import { throwError, Subject, BehaviorSubject } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
+import { JsonPipe } from "@angular/common";
 
 export interface AuthResponseData {
   kind: string;
@@ -71,6 +72,34 @@ export class AuthService {
       );
   }
 
+  autoLogin() {
+    // JsonPipe.parse deserializes string data into object
+    const userData: {
+      email: string;
+      id: string;
+      _token: string;
+      _tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem("userData"));
+
+    if (!userData) {
+      return;
+    }
+
+    // without the type no properties on userData
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+    );
+
+    // token is a get property(read-only)
+    // if valid then publicize for auto login
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+    }
+  }
+
   logout() {
     this.user.next(null);
     this.router.navigate(["/auth"]);
@@ -86,6 +115,8 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+
+    // serializes and store object as string
     localStorage.setItem("userData", JSON.stringify(user));
   }
 
