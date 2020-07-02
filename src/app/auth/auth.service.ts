@@ -21,6 +21,7 @@ export class AuthService {
   // login occurs way earlier before user will even subscribe to get the current user @ anytime thus, not just a Subject
   // and requires init value
   user = new BehaviorSubject<User>(null);
+  tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -103,6 +104,17 @@ export class AuthService {
   logout() {
     this.user.next(null);
     this.router.navigate(["/auth"]);
+    localStorage.removeItem("userData");
+    clearTimeout(this.tokenExpirationTimer);
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(tokenExpirationDuration: number) {
+    // stores the id of the timer to be destroyed
+    this.tokenExpirationTimer = setTimeout(
+      () => this.logout(),
+      tokenExpirationDuration
+    );
   }
 
   private handleAuthentication(
