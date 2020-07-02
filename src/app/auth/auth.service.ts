@@ -98,6 +98,13 @@ export class AuthService {
     // if valid then publicize for auto login
     if (loadedUser.token) {
       this.user.next(loadedUser);
+
+      // calculatin' the remainin' time for the token to expire to auto logout to occur
+      // ...future expire date - now
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expirationDuration);
     }
   }
 
@@ -105,7 +112,10 @@ export class AuthService {
     this.user.next(null);
     this.router.navigate(["/auth"]);
     localStorage.removeItem("userData");
-    clearTimeout(this.tokenExpirationTimer);
+
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
     this.tokenExpirationTimer = null;
   }
 
@@ -115,6 +125,7 @@ export class AuthService {
       () => this.logout(),
       tokenExpirationDuration
     );
+    console.log("expire-duration |", tokenExpirationDuration);
   }
 
   private handleAuthentication(
@@ -127,6 +138,9 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+
+    // auto logout timer starts here, once new user is created
+    this.autoLogout(expiresIn * 1000);
 
     // serializes and store object as string
     localStorage.setItem("userData", JSON.stringify(user));
