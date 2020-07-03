@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    // no subscription here...just transformation of observable result
+    // no manuel subscription here, done auto...just transformation of observable result
     return this.authService.user.pipe(
       map((user) => {
         // !!user => convert valid user to true boolean, else false
