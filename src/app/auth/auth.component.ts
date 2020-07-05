@@ -40,7 +40,7 @@ export class AuthComponent {
     authObservable.subscribe(
       (res) => {
         this.isLoading = false;
-        this.router.navigate(["/recipes"])
+        this.router.navigate(["/recipes"]);
         console.log(res);
       },
       (errorMessage) => {
@@ -50,5 +50,10 @@ export class AuthComponent {
       }
     );
     authForm.reset();
+  }
+
+  onErrorHandle() {
+    // set error back to null
+    this.error = null;
   }
 }
