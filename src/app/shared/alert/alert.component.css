@@ -19,6 +19,8 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   /* z-axis for layers */
   z-index: 51;
+  color: red;
+  max-width: 100%;
 }
 
 .alert-box-actions {
