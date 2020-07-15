@@ -5,8 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "src/app/header/header.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { BasicHighlightDirective } from "./basic-highlight/basic-highlight.directive";
 import { BetterHighlightDirective } from "./better-highlight/better-highlight.directive";
 import { UnlessDirective } from "./unless/unless.directive";
@@ -19,13 +17,12 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 import { AlertComponent } from "./shared/alert/alert.component";
 import { PlaceholderDirective } from "./shared/placeholder/placeholder.directive";
 import { RecipeModule } from "./recipes/recipes.module";
+import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     BasicHighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
@@ -42,6 +39,7 @@ import { RecipeModule } from "./recipes/recipes.module";
     HttpClientModule,
     AppRoutingModule,
     RecipeModule,
+    ShoppingListModule,
   ],
   providers: [
     RecipeService,
