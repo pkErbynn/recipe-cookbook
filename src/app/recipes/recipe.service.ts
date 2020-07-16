@@ -4,6 +4,7 @@ import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
 import { Subject } from "rxjs";
 
+// no need to be imported in the provided block of app-module
 @Injectable({
   providedIn: "root",
 })
