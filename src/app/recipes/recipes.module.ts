@@ -22,7 +22,7 @@ import { RecipesRoutingModule } from "./recipes-routing.module";
   imports: [
     AppRoutingModule,
     ReactiveFormsModule,
-    CommonModule,
+    CommonModule, // contains ngFor, ngIf
     RecipesRoutingModule,
   ],
 })
