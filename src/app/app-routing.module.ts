@@ -1,10 +1,18 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { AuthComponent } from "./auth/auth.component";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/recipes", pathMatch: "full" },
+
+  // lazy loading. load component on demand
+  //...nb: server needs restart to ensure lazy loading effect
+  // module's eager loading in app-module should be removed
+  // routes of child should be empty since accessed at global level
+  // don't bring the ".ts" in the end
+  {
+    path: "recipes",
+    loadChildren: "./recipes/recipes.module#RecipesModule",
+  },
 ];
 export const routes: Routes = [];
 @NgModule({

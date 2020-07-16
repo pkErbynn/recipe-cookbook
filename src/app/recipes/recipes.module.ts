@@ -26,4 +26,4 @@ import { RecipesRoutingModule } from "./recipes-routing.module";
     RecipesRoutingModule,
   ],
 })
-export class RecipeModule {}
+export class RecipesModule {}

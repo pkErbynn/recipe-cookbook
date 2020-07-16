@@ -9,7 +9,8 @@ import { RecipeResolverService } from "./recipes-resolver.server";
 
 const routes: Routes = [
   {
-    path: "recipes",
+    // empty path since gonna be loaded at global level
+    path: "",
     component: RecipesComponent,
     canActivate: [AuthGuard],
     children: [
@@ -29,7 +30,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)], // forChild needed in lazy loading
   exports: [RouterModule],
 })
 export class RecipesRoutingModule {}
