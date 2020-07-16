@@ -5,8 +5,9 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
 
-// auth-module imports formsModule therefore, no need to import formsModule in app-module
+// this auth-module imports formsModule. therefore, no need to import formsModule in app-module
 @NgModule({
+  // only what's declared in a module is accessible
   declarations: [AuthComponent],
   imports: [
     CommonModule,
