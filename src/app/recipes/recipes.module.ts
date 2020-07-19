@@ -20,7 +20,6 @@ import { RecipesRoutingModule } from "./recipes-routing.module";
     RecipeEditComponent,
   ],
   imports: [
-    AppRoutingModule,
     ReactiveFormsModule,
     CommonModule, // contains ngFor, ngIf
     RecipesRoutingModule,

@@ -30,7 +30,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes)], // forChild needed in lazy loading
+  imports: [RouterModule.forChild(routes)], // forChild needed in lazy loading module
   exports: [RouterModule],
 })
 export class RecipesRoutingModule {}

@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   // don't bring the ".ts" in the end
   {
     path: "recipes",
-    loadChildren: "./recipes/recipes.module#RecipesModule",
+    loadChildren: "./recipes/recipes.module#RecipesModule", // revert to normal and lady-load other feature and see
   },
 ];
 export const routes: Routes = [];
