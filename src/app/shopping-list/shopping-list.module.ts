@@ -10,9 +10,7 @@ import { RouterModule } from "@angular/router";
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild([
-      { path: "shopping-list", component: ShoppingListComponent },
-    ]),
+    RouterModule.forChild([{ path: "", component: ShoppingListComponent }]), // set path as empty since path now at the global config level
   ],
 })
 export class ShoppingListModule {}

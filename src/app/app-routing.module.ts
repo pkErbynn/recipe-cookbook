@@ -13,6 +13,10 @@ const appRoutes: Routes = [
     path: "recipes",
     loadChildren: "./recipes/recipes.module#RecipesModule", // revert to normal and lady-load other feature and see
   },
+  {
+    path: "shopping-list",
+    loadChildren: "./shopping-list/shopping-list.module#ShoppingListModule", // revert to normal and lady-load other feature and see
+  },
 ];
 export const routes: Routes = [];
 @NgModule({
