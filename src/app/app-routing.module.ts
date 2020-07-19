@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     loadChildren: "./auth/auth.module#AuthModule",
   },
 
-  // nb: might need to restart server for lazry loadin' to take effect
+  // nb: might need to restart server for lazy loadin' to take effect
 ];
 export const routes: Routes = [];
 @NgModule({
