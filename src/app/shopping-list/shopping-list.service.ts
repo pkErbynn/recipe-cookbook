@@ -3,14 +3,14 @@ import { Ingredient } from "../shared/ingredient.model";
 import { Subject } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root", // best practice...accessible application-wide...shouldn't be provided in the provided[]
 })
 export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
   private ingredients: Ingredient[] = [
     new Ingredient("Apples", 5),
-    new Ingredient("Tomatoe", 32)
+    new Ingredient("Tomatoe", 32),
   ];
 
   constructor() {}

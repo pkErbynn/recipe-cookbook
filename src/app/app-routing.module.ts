@@ -1,41 +1,32 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
-import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
-import { RecipeResolverService } from "./recipes/recipes-resolver.server";
-import { AuthComponent } from "./auth/auth.component";
-import { AuthGuard } from "./auth/auth.guard";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/recipes", pathMatch: "full" },
+
+  // lazy loading. load component on demand
+  //...nb: server needs restart to ensure lazy loading effect
+  // module's eager loading in app-module should be removed
+  // routes of child should be empty since accessed at global level
+  // don't bring the ".ts" in the end
   {
     path: "recipes",
-    component: RecipesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: "", component: RecipeStartComponent },
-      { path: "new", component: RecipeEditComponent },
-      {
-        path: ":id",
-        component: RecipeDetailComponent,
-        resolve: [RecipeResolverService],
-      },
-      {
-        path: ":id/edit",
-        component: RecipeEditComponent,
-        resolve: [RecipeResolverService],
-      },
-    ],
+    loadChildren: "./recipes/recipes.module#RecipesModule",
   },
-  { path: "shopping-list", component: ShoppingListComponent },
-  { path: "auth", component: AuthComponent },
+  {
+    path: "shopping-list",
+    loadChildren: "./shopping-list/shopping-list.module#ShoppingListModule",
+  },
+  {
+    path: "auth",
+    loadChildren: "./auth/auth.module#AuthModule",
+  },
+
+  // nb: might need to restart server for lazy loadin' to take effect
 ];
 export const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule],
+  exports: [RouterModule], // exports the declared routes application-wide
 })
 export class AppRoutingModule {}
