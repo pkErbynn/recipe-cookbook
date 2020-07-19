@@ -11,12 +11,18 @@ const appRoutes: Routes = [
   // don't bring the ".ts" in the end
   {
     path: "recipes",
-    loadChildren: "./recipes/recipes.module#RecipesModule", // revert to normal and lady-load other feature and see
+    loadChildren: "./recipes/recipes.module#RecipesModule",
   },
   {
     path: "shopping-list",
-    loadChildren: "./shopping-list/shopping-list.module#ShoppingListModule", // revert to normal and lady-load other feature and see
+    loadChildren: "./shopping-list/shopping-list.module#ShoppingListModule",
   },
+  {
+    path: "auth",
+    loadChildren: "./auth/auth.module#AuthModule",
+  },
+
+  // nb: might need to restart server for lazry loadin' to take effect
 ];
 export const routes: Routes = [];
 @NgModule({
