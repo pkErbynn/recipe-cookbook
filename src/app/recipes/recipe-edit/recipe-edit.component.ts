@@ -6,14 +6,15 @@ import { RecipeService } from "../recipe.service";
 @Component({
   selector: "app-recipe-edit",
   templateUrl: "./recipe-edit.component.html",
-  styleUrls: ["./recipe-edit.component.css"]
+  styleUrls: ["./recipe-edit.component.css"],
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
   editMode: boolean = false;
   recipeForm: FormGroup;
 
-  get ingredientControls(){
+  // same as getIngredientControls() but will be called as such name without ()
+  get ingredientControls() {
     return (this.recipeForm.get("ingredients") as FormArray).controls;
   }
 
@@ -52,8 +53,8 @@ export class RecipeEditComponent implements OnInit {
         name: new FormControl(null, Validators.required),
         amount: new FormControl(null, [
           Validators.required,
-          Validators.pattern(/^[1-9]+[0-9]*$/)
-        ])
+          Validators.pattern(/^[1-9]+[0-9]*$/),
+        ]),
       })
     );
   }
@@ -85,8 +86,8 @@ export class RecipeEditComponent implements OnInit {
               name: new FormControl(ingredient.name, Validators.required),
               amount: new FormControl(ingredient.amount, [
                 Validators.required,
-                Validators.pattern(/^[1-9]+[0-9]*$/)
-              ])
+                Validators.pattern(/^[1-9]+[0-9]*$/),
+              ]),
             })
           );
         }
@@ -97,7 +98,7 @@ export class RecipeEditComponent implements OnInit {
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImgPath, Validators.required),
       description: new FormControl(recipeDescription, Validators.required),
-      ingredients: recipeIngredients
+      ingredients: recipeIngredients,
     });
   }
 }
