@@ -54,7 +54,7 @@ export class AuthService {
     return this.http
       .post<AuthResponseData>(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
-          environment.firebaseAPIKey,
+          environment.firebaseAPIKey, //point to env not env.prod
         {
           email: email,
           password: password,
