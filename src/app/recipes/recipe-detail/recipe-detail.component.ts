@@ -1,12 +1,13 @@
-import { Component, OnInit, Output, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+
 import { Recipe } from "../recipe.model";
 import { RecipeService } from "../recipe.service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
 
 @Component({
   selector: "app-recipe-detail",
   templateUrl: "./recipe-detail.component.html",
-  styleUrls: ["./recipe-detail.component.css"]
+  styleUrls: ["./recipe-detail.component.css"],
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;

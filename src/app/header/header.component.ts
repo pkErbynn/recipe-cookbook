@@ -1,13 +1,8 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-  OnInit,
-  OnDestroy,
-} from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
+
 import { DataStorageService } from "../shared/data-storage.service";
 import { AuthService } from "../auth/auth.service";
-import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -41,8 +36,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.dataStorageService.fetchRecipes().subscribe();
   }
 
-  onLogout(){
-    this.authService.logout() 
+  onLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy() {
