@@ -9,6 +9,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AlertComponent } from "./shared/alert/alert.component";
 import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core.module";
+import { StoreModule } from "@ngrx/store";
+import { shoppingListReducer } from "./shopping-list/store/shopping-list.reducer";
 // nb: even on-used imports are all bundled together making it big
 
 @NgModule({
@@ -20,6 +22,7 @@ import { CoreModule } from "./core.module";
     AppRoutingModule,
     SharedModule,
     CoreModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer }), // key can be any
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent],
