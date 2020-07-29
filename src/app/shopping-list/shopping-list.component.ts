@@ -11,7 +11,7 @@ import { Store } from "@ngrx/store";
   styleUrls: ["./shopping-list.component.css"],
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Observable<{ ingredients: Ingredient[] }>;
+  ingredients: Observable<{ ingredients: Ingredient[] }>; // matches data format of the store
   private subscription: Subscription;
 
   constructor(
@@ -20,7 +20,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // select help select slice of the store
+    // select slice of the data type in the store
     this.ingredients = this.store.select("shoppingList");
     // this.ingredients = this.shoppingListService.getIngredients();
     // this.subscription = this.shoppingListService.ingredientsChanged.subscribe(
@@ -35,8 +35,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    // if (this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
   }
 }
