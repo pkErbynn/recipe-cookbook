@@ -16,7 +16,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   constructor(
     private shoppingListService: ShoppingListService,
-    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }> // matches object resulting from the reducer
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }> // matches structure of reducer object in the app-module
   ) {}
 
   ngOnInit() {
