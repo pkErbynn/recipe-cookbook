@@ -16,3 +16,5 @@ export class AddIngredients implements Action {
 
   constructor(public payload: Ingredient[]) {}
 }
+
+export type ShoppingListActionsUnion = AddIngredient | AddIngredients;

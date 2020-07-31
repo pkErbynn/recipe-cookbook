@@ -7,7 +7,7 @@ const initialState = {
 
 export function shoppingListReducer(
   state = initialState,
-  action: ShoppingListActions.AddIngredient
+  action: ShoppingListActions.ShoppingListActionsUnion
 ) {
   switch (
     action.type // rx action only enforces a type
@@ -17,6 +17,11 @@ export function shoppingListReducer(
         // returns an object
         ...state,
         ingredients: [...state.ingredients, action.payload],
+      };
+    case ShoppingListActions.ADD_INGREDIENTS:
+      return {
+        ...state,
+        ingredient: [...state.ingredients, ...action.payload], // spread operator(...) used cus adds ingredient[]
       };
     default:
       return state;
