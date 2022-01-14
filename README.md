@@ -1,6 +1,17 @@
-# MyFirstApp
+# Recipe Cookbook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+
+## Screenshots
+
+* Recipes <br><br>
+<img src="src/assets/images/recipe-cookbook.png">
+
+* Shopping list <br><br>
+<img src="src/assets/images/recipe-book-shopping-list.png">
+
+* New recipe <br><br>
+<img src="src/assets/images/recipe-book-new.png">
 
 ## Development server
 
