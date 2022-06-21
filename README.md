@@ -4,6 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Screenshots
 
+* Recipes Book login / sign-up <br><br>
+<img src="src/assets/images/recipe-cookbook-login-signup.png.jpg">
+
 * Recipes <br><br>
 <img src="src/assets/images/recipe-cookbook.png">
 
